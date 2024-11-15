@@ -1,13 +1,17 @@
 package member;
 
 import common.JDBConnect;
+import jakarta.servlet.ServletContext;
 
 public class MemberDAO extends JDBConnect {
 	public MemberDAO(String drv, String url, String id, String pw) {
 		//super()를 통해 부모클래스의 생성자를 호출한다.
 		super(drv,url,id,pw);
 	}
-
+	
+	public MemberDAO(ServletContext application) {
+		super(application);
+	}
 	public MemberDAO() {
 		super();
 	}

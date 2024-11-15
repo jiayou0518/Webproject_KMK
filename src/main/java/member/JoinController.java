@@ -16,7 +16,6 @@ public class JoinController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
 		MemberDTO dto = new MemberDTO();
 		
 		dto.setId(req.getParameter("uid"));
