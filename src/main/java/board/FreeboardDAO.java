@@ -141,6 +141,30 @@ public class FreeboardDAO extends DBConnPool {
 		}
 	}
 	
+	public int insertWrite(FreeboardDTO dto) {
+		int result = 0;
+		try {
+			/* default값이 있는 3개의 컬럼을 제외한 나머지 컬럼에 대해서만 insert 쿼리문을 작성.
+			 * 일련번호 idx의 경우에는 시퀀스를 사용. */
+			String query = "INSERT INTO freeboard ( "
+					+ " idx, id, title, content )"
+					+ " VALUES ( seq_board_num.NEXTVAL,?,?,?)";
+			//쿼리문을 인수로 preparedStatement 인스턴스 생성
+			psmt = con.prepareStatement(query);
+			//인스턴스를 통해 인파라미터 설정
+			psmt.setString(1, dto.getId());
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getContent());
+			//쿼리문 실행. insert 쿼리의 경우 입력된 행의 갯수가 반환됨.
+			result = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("게시물 입력 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 }
 	
 	
