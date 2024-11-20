@@ -1,3 +1,4 @@
+<%@page import="utils.CookieManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -71,7 +72,17 @@
                                 </form>
                             </div>
                             <!-- Login -->
-                            <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <%
+							if(session.getAttribute("UserId")==null){
+							%>
+                            <a href="./login.do" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <%
+                            } else{
+                            %>
+                            <a href="mypage.jsp" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <%
+                            }
+                            %>
                         </div>
                     </div>
                 </div>
@@ -87,7 +98,7 @@
                     <nav class="classy-navbar justify-content-between" id="vizewNav">
 
                         <!-- Nav brand -->
-                        <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                        <a href="index.jsp" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -104,7 +115,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li class="active"><a href="index.html">Home</a></li>
+                                    <li class="active"><a href="index.jsp">Home</a></li>
                                     <li><a href="archive-list.html">Archives</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
@@ -202,22 +213,77 @@
                             <h4>Great to have you back!</h4>
                             <div class="line"></div>
                         </div>
+                        
+                        <script>
+						if(request.getAttribute("LoginErrMsg")!=null)
+							alert("아이디 또는 비밀번호를 확인해주세요");
 
-                        <form action="index.html" method="post">
+								
+						function validateForm(form){
+							/*
+							매개변수로 전달된 <form>태그의 DOM을 통해 하위태그인 <input>에 접근할 수 있다.
+							접근시에는 name속성값을 사용하고, value는 입력된 값을 가리키게된다.
+							*/
+							if(!form.user_id.value){
+								//입력된 가밧이 없다면 경고창을 띄우고..
+								alert("아이디를 입력하세요.");
+								//입력을 위해 포커스를 이동하고..
+								form.user_id.focus();
+								//submit 이벤트핸들러 쪽으로 false를 반환한다.
+								return false;
+								//그러면 서버로의 전송은 취소(중단)된다.
+							}
+							/* 빈값에 대한 체크는 !(부정연산자)와 아래의 방식 2가지를 모두 사용할 수 있다.*/
+							if(form.user_pass.value ==""){
+								alert("패스워드를 입력하세요.");
+								form.user_pass.focus();
+								return false;
+							}
+						}
+						
+						</script>
+						
+						<%
+						if(session.getAttribute("UserId")==null){
+						%>
+						<%
+						   //페이지에 진입하면 loginId라는 쿠키가 있는지 확인한다.
+						   String loginId = CookieManager.readCookie(request, "loginId");
+						   //이미 생성된 쿠키가 있다면 체크박스가 체크된 상태로 페이지를 로드한다.
+						   String cookieCheck="";
+						   if(!loginId.equals("")){
+							   //이를 위해 checked 속성값을 추가한다.
+							   cookieCheck="checked";
+						   }
+						   %>
+						
+                        <form action="./login.do" method="post" onsubmit="return validateForm(this);">
                             <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email or User Name">
+                                <input type="text" class="form-control" name="user_id" placeholder="아이디" value="<%= loginId %>">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                <input type="text" class="form-control" name="user_pass" placeholder="비밀번호">
                             </div>
                             <div class="form-group">
-                                <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                                    <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
+                                <div >
+                                    <input type="checkbox" name="id_rem" value="Y" <%= cookieCheck %> >
+                                    <label>Remember me</label>
+                                    <a href="./findpass.jsp" class="float-right">비밀번호 찾기</a>
                                 </div>
                             </div>
                             <button type="submit" class="btn vizew-btn w-100 mt-30">Login</button>
                         </form>
+                        <%
+						} else {
+							%>
+							<div class="section-heading">
+                            <h4>
+							<%= session.getAttribute("UserName")%> 회원님, 로그인 하셨습니다!</h4>
+                        	</div>
+                        <%	
+						}
+                        %>
+                        
                     </div>
                 </div>
             </div>
@@ -233,7 +299,7 @@
                 <div class="col-12 col-sm-6 col-xl-3">
                     <div class="footer-widget mb-70">
                         <!-- Logo -->
-                        <a href="index.html" class="foo-logo d-block mb-4"><img src="img/core-img/logo2.png" alt=""></a>
+                        <a href="index.jsp" class="foo-logo d-block mb-4"><img src="img/core-img/logo2.png" alt=""></a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
                         <!-- Footer Newsletter Area -->
                         <div class="footer-nl-area">
@@ -291,7 +357,7 @@
                                 <img src="img/bg-img/1.jpg" alt="">
                             </div>
                             <div class="post-content">
-                                <a href="single-post.html" class="post-title">DC Shoes: gymkhana the</a>
+                                <a href="single-post.jsp" class="post-title">DC Shoes: gymkhana the</a>
                                 <div class="post-meta d-flex justify-content-between">
                                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>

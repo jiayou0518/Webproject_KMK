@@ -71,7 +71,17 @@
                                 </form>
                             </div>
                             <!-- Login -->
-                            <a href="login.jsp" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <%
+							if(session.getAttribute("UserId")==null){
+							%>
+                            <a href="./login.do" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <%
+                            } else{
+                            %>
+                            <a href="mypage.jsp" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <%
+                            }
+                            %>
                         </div>
                     </div>
                 </div>
@@ -105,7 +115,7 @@
                             <div class="classynav">
                                 <ul>
                                     <li class="active"><a href="index.jsp">Home</a></li>
-                                    <li><a href="archive-list.jsp">Archives</a></li>
+                                    <li><a href="./fblist.do">FreeBoard</a></li>
                                     <li><a href="#">Pages</a>
                                         <ul class="dropdown">
                                             <li><a href="index.jsp">- Home</a></li>
@@ -115,8 +125,18 @@
                                             <li><a href="video-post.jsp">- Single Video Post</a></li>
                                             <li><a href="contact.jsp">- Contact</a></li>
                                             <li><a href="typography.jsp">- Typography</a></li>
-                                            <li><a href="login.jsp">- Login</a></li>
-                                            <li><a href="join.jsp">- Join</a></li>
+                                            <%
+												if(session.getAttribute("UserId")==null){
+											%>
+                                            <li><a href="./login.do">- Login</a></li>
+                                            <li><a href="./join.do">- Join</a></li>
+                                            <% }else{
+                                            %>
+                                            <li><a href="./logout.do">- Logout</a></li>
+                                            
+                                            <%                                            
+                                            }
+                                            %>
                                         </ul>
                                     </li>
                                     <li><a href="#">Features</a>

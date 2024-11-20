@@ -173,7 +173,7 @@ img {
   background-color: #1abc9c;
   border-radius: 50px;
   color: #fff !important;
-  margin-left: 30px;
+  margin: 20px;
   text-align: center; }
   .classy-btn:hover, .classy-btn:focus {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }

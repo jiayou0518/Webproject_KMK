@@ -204,13 +204,13 @@
                             <div class="line"></div>
                         </div>
 
-                        <form action="../join.do" method="post">
+                        <form action="./join.do" method="post">
                         	<div class="form-group">
                                 <input type="text" class="form-control" name="uname" placeholder="이름">
                             </div>
                         	<div class="form-group">
                                 <input type="text" class="form-control" name="uid" placeholder="아이디">
-                                <button type="submit" class="btn vizew-btn w-100 mt-10">아이디 중복 확인</button>
+                              <!--   <button type="button" onclick=idcheck(uid) class="btn vizew-btn w-100 mt-10">아이디 중복 확인</button> -->
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" name="pass" placeholder="비밀번호">

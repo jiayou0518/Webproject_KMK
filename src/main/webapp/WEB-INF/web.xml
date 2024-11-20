@@ -20,11 +20,21 @@
   </context-param>
   <context-param>
   	<param-name>OracleId</param-name>
-  	<param-value>c##webproject_db</param-value>
+  	<param-value>webproject_db</param-value>
   </context-param>
   <context-param>
   	<param-name>OraclePwd</param-name>
   	<param-value>1234</param-value>
   </context-param>
-  
+   <!-- 게시판 페이징 처리를 위한 설정값 -->
+ <!-- 한 페이지 당 출력할 게시물의 갯수 -->
+ <context-param>
+ 	<param-name>POSTS_PER_PAGE</param-name>
+ 	<param-value>10</param-value>
+ </context-param>
+  <context-param>
+ 	<param-name>PAGES_PER_BLOCK</param-name>
+ 	<param-value>5</param-value>
+ </context-param>
+ 
 </web-app>
