@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -104,65 +105,24 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <li class="active"><a href="index.html">Home</a></li>
-                                    <li><a href="archive-list.html">Archives</a></li>
-                                    <li><a href="#">Pages</a>
+                                    <li class="active"><a href="index.jsp">Home</a></li>
+                                    <li><a href="./fblist.do">FreeBoard</a></li>
+                                    <li><a href="contact.jsp">Q&A</a></li>
+                                    <li><a href="contact.jsp">DataBoard</a></li>
+                                    <li><a href="#">Account</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.html">- Home</a></li>
-                                            <li><a href="archive-list.html">- Archive List</a></li>
-                                            <li><a href="archive-grid.html">- Archive Grid</a></li>
-                                            <li><a href="single-post.html">- Single Post</a></li>
-                                            <li><a href="video-post.html">- Single Video Post</a></li>
-                                            <li><a href="contact.html">- Contact</a></li>
-                                            <li><a href="typography.html">- Typography</a></li>
-                                            <li><a href="login.html">- Login</a></li>
+											<c:choose>
+											<c:when test="${ empty UserId }">
+                                            <li><a href="./login.do">- Login</a></li>
+                                            <li><a href="./join.do">- Join</a></li>
+											</c:when>
+                                            <c:otherwise>
+                                            <li><a href="./logout.do">- Logout</a></li>
+                                            </c:otherwise>
+											</c:choose>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Features</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">- Home</a></li>
-                                                <li><a href="archive-list.html">- Archive List</a></li>
-                                                <li><a href="archive-grid.html">- Archive Grid</a></li>
-                                                <li><a href="single-post.html">- Single Post</a></li>
-                                                <li><a href="video-post.html">- Single Video Post</a></li>
-                                                <li><a href="contact.html">- Contact</a></li>
-                                                <li><a href="typography.html">- Typography</a></li>
-                                                <li><a href="login.html">- Login</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">- Home</a></li>
-                                                <li><a href="archive-list.html">- Archive List</a></li>
-                                                <li><a href="archive-grid.html">- Archive Grid</a></li>
-                                                <li><a href="single-post.html">- Single Post</a></li>
-                                                <li><a href="video-post.html">- Single Video Post</a></li>
-                                                <li><a href="contact.html">- Contact</a></li>
-                                                <li><a href="typography.html">- Typography</a></li>
-                                                <li><a href="login.html">- Login</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">- Home</a></li>
-                                                <li><a href="archive-list.html">- Archive List</a></li>
-                                                <li><a href="archive-grid.html">- Archive Grid</a></li>
-                                                <li><a href="single-post.html">- Single Post</a></li>
-                                                <li><a href="video-post.html">- Single Video Post</a></li>
-                                                <li><a href="contact.html">- Contact</a></li>
-                                                <li><a href="typography.html">- Typography</a></li>
-                                                <li><a href="login.html">- Login</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.html">- Home</a></li>
-                                                <li><a href="archive-list.html">- Archive List</a></li>
-                                                <li><a href="archive-grid.html">- Archive Grid</a></li>
-                                                <li><a href="single-post.html">- Single Post</a></li>
-                                                <li><a href="video-post.html">- Single Video Post</a></li>
-                                                <li><a href="contact.html">- Contact</a></li>
-                                                <li><a href="typography.html">- Typography</a></li>
-                                                <li><a href="login.html">- Login</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -254,12 +214,12 @@
 
                             <!-- Post Content -->
                             <div class="post-content mt-0">
-                                <a href="#" class="post-cata cata-sm cata-danger">Game</a>
+                                <a href="#" class="post-cata cata-sm cata-danger">${ dto.idx }</a>
                                 <a href="single-post.html" class="post-title mb-2">${ dto.title }</a>
 
                                 <div class="d-flex justify-content-between mb-30">
                                     <div class="post-meta d-flex align-items-center">
-                                        <a href="#" class="post-author">By ${ dto.name }</a>
+                                        <a href="#" class="post-author">By ${ dto.name } (${ dto.id })</a>
                                         <i class="fa fa-circle" aria-hidden="true"></i>
                                         <a href="#" class="post-date">${ dto.postdate }</a>
                                     </div>
@@ -275,90 +235,27 @@
 
                             <!-- Post Tags -->
                             <div class="post-tags mt-30">
+                            <script>
+							function fbdeleteConfirm(idx) {
+								if(confirm("정말 삭제하시겠습니까?"))
+									location.href="./fbdelete.do?idx="+idx;
+								else
+									alert("취소되었습니다.");
+							}
+							</script>
                                 <ul>
-                                    <li><a href="#">HealthFood</a></li>
-                                    <li><a href="#">Sport</a></li>
-                                    <li><a href="#">Game</a></li>
+                                <c:if test="${ UserId eq dto.id }">
+                                    <li><a href="./fbedit.do?idx=${ param.idx }">Edit</a></li>
+                                    <li><a href="#" onclick="fbdeleteConfirm(${ param.idx })">Delete</a></li>
+                                </c:if>
+                                    <li><a href="./fblist.do">List</a></li>
                                 </ul>
                             </div>
 
                             <!-- Post Author -->
-                            <div class="vizew-post-author d-flex align-items-center py-5">
-                                <div class="post-author-thumb">
-                                    <img src="img/bg-img/30.jpg" alt="">
-                                </div>
-                                <div class="post-author-desc pl-4">
-                                    <a href="#" class="author-name">Calantha Flower</a>
-                                    <p>Hello! My name is Nicolas Sarkozy. I’m a web designer and front-end web developer with over fifteen years of professional.</p>
-                                    <div class="post-author-social-info">
-                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                                        <a href="#"><i class="fa fa-dribbble"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-
+                            
                             <!-- Related Post Area -->
-                            <div class="related-post-area mt-5">
-                                <!-- Section Title -->
-                                <div class="section-heading style-2">
-                                    <h4>Related Post</h4>
-                                    <div class="line"></div>
-                                </div>
-
-                                <div class="row">
-
-                                    <!-- Single Blog Post -->
-                                    <div class="col-12 col-md-6">
-                                        <div class="single-post-area mb-50">
-                                            <!-- Post Thumbnail -->
-                                            <div class="post-thumbnail">
-                                                <img src="img/bg-img/11.jpg" alt="">
-
-                                                <!-- Video Duration -->
-                                                <span class="video-duration">05.03</span>
-                                            </div>
-
-                                            <!-- Post Content -->
-                                            <div class="post-content">
-                                                <a href="#" class="post-cata cata-sm cata-success">Sports</a>
-                                                <a href="single-post.html" class="post-title">Warner Bros. Developing ‘The accountant’ Sequel</a>
-                                                <div class="post-meta d-flex">
-                                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 22</a>
-                                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 16</a>
-                                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 15</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Single Blog Post -->
-                                    <div class="col-12 col-md-6">
-                                        <div class="single-post-area mb-50">
-                                            <!-- Post Thumbnail -->
-                                            <div class="post-thumbnail">
-                                                <img src="img/bg-img/12.jpg" alt="">
-
-                                                <!-- Video Duration -->
-                                                <span class="video-duration">05.03</span>
-                                            </div>
-
-                                            <!-- Post Content -->
-                                            <div class="post-content">
-                                                <a href="#" class="post-cata cata-sm cata-danger">Game</a>
-                                                <a href="single-post.html" class="post-title">Searching for the 'angel' who held me on Westminste</a>
-                                                <div class="post-meta d-flex">
-                                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 28</a>
-                                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 17</a>
-                                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 22</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             <!-- Comment Area Start -->
                             <div class="comment_area clearfix mb-50">
@@ -471,38 +368,7 @@
                 </div>
 
                 <!-- Sidebar Widget -->
-                <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-                    <div class="sidebar-area">
 
-                        <!-- ***** Single Widget ***** -->
-                        <div class="single-widget share-post-widget mb-50">
-                            <p>Share This Post</p>
-                            <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
-                            <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a>
-                            <a href="#" class="google"><i class="fa fa-google" aria-hidden="true"></i> Google+</a>
-                        </div>
-
-                        <!-- ***** Single Widget ***** -->
-                        <div class="single-widget p-0 author-widget">
-                            <div class="p-4">
-                                <img class="author-avatar" src="img/bg-img/30.jpg" alt="">
-                                <a href="#" class="author-name">Chris Hemsworth</a>
-                                <div class="author-social-info">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
-                            </div>
-
-                            <div class="authors--meta-data d-flex">
-                                <p>Posted<span class="counter">80</span></p>
-                                <p>Comments<span class="counter">230</span></p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </div>
     </section>

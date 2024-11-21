@@ -1,4 +1,4 @@
-package board;
+package freeboard;
 
 import java.io.IOException;
 
@@ -22,7 +22,7 @@ public class FbWriteController extends HttpServlet {
 			return;
 		}
 		//로그인이 완료된 상태라면 쓰기페이지를 포워드한다.
-		req.getRequestDispatcher("./write.jsp")
+		req.getRequestDispatcher("./fbwrite.jsp")
 			.forward(req, resp);
 	}
 	
@@ -30,7 +30,7 @@ public class FbWriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		if(session.getAttribute("UserId")==null) {
-			JSFunction.alertLocation(resp, "로그인 후 이용해주세요.", "../06Session/LoginForm.jsp");
+			JSFunction.alertLocation(resp, "로그인 후 이용해주세요.", ".login.do");
 			return;
 		}
 		

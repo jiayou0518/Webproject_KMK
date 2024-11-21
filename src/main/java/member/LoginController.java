@@ -42,10 +42,12 @@ public class LoginController extends HttpServlet{
 			//세션 영역에 아이디와 이름을 저장한다.
 			if(req.getParameter("id_rem")!=null) {
 				CookieManager.makeCookie(resp,"loginId",user_id,86400);
+				session.setAttribute("SaveId", rs.getId());
 			}
 			else {
 	    		//로그인에 성공했지만 체크를 해제한 상태라면 쿠키를 삭제한다.
 	    		CookieManager.deleteCookie(resp,"loginId");
+	    		session.removeAttribute("SaveId");
 	    	}
 			session.setAttribute("UserId", rs.getId());
 			session.setAttribute("UserName", rs.getName());

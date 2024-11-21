@@ -142,8 +142,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Feature</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Archive by Category MUSIC</li>
+                            <li class="breadcrumb-item"><a href="#">Archives</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Reunification of migrant toddlers</li>
                         </ol>
                     </nav>
                 </div>
@@ -152,127 +152,237 @@
     </div>
     <!-- ##### Breadcrumb Area End ##### -->
 
-    <!-- ##### Archive List Posts Area Start ##### -->
-    <div class="vizew-archive-list-posts-area mb-80">
+    <!-- ##### Pager Area Start ##### -->
+    <div class="vizew-pager-area">
+        <div class="vizew-pager-prev">
+            <p>PREVIOUS ARTICLE</p>
+
+            <!-- Single Feature Post -->
+            <div class="single-feature-post video-post bg-img pager-article" style="background-image: url(img/bg-img/15.jpg);">
+                <!-- Post Content -->
+                <div class="post-content">
+                    <a href="#" class="post-cata cata-sm cata-success">Sports</a>
+                    <a href="video-post.html" class="post-title">Searching for the 'angel' who held me on Westminster Bridge</a>
+                    <div class="post-meta d-flex">
+                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 18</a>
+                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 32</a>
+                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 24</a>
+                    </div>
+                </div>
+                <!-- Video Duration -->
+                <span class="video-duration">11.13</span>
+            </div>
+        </div>
+
+        <div class="vizew-pager-next">
+            <p>NEXT ARTICLE</p>
+
+            <!-- Single Feature Post -->
+            <div class="single-feature-post video-post bg-img pager-article" style="background-image: url(img/bg-img/14.jpg);">
+                <!-- Post Content -->
+                <div class="post-content">
+                    <a href="#" class="post-cata cata-sm cata-business">Business</a>
+                    <a href="video-post.html" class="post-title">Reunification of migrant toddlers, parents should be completed Thursday</a>
+                    <div class="post-meta d-flex">
+                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
+                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
+                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
+                    </div>
+                </div>
+                <!-- Video Duration -->
+                <span class="video-duration">06.59</span>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Pager Area End ##### -->
+	<c:choose>
+	<c:when test="${ dto.qapass eq qapass}">
+    <!-- ##### Post Details Area Start ##### -->
+    <section class="post-details-area mb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <!-- Post Details Content Area -->
+                <div class="col-12 col-lg-8 col-xl-7">
+                    <div class="post-details-content">
+                        <!-- Blog Content -->
+                        <div class="blog-content">
+
+                            <!-- Post Content -->
+                            <div class="post-content mt-0">
+                                <a href="#" class="post-cata cata-sm cata-danger">${ dto.idx }</a>
+                                <a href="single-post.html" class="post-title mb-2">${ dto.title }</a>
+
+                                <div class="d-flex justify-content-between mb-30">
+                                    <div class="post-meta d-flex align-items-center">
+                                        <a href="#" class="post-author">By ${ dto.name } (${ dto.id })</a>
+                                        <i class="fa fa-circle" aria-hidden="true"></i>
+                                        <a href="#" class="post-date">${ dto.postdate }</a>
+                                    </div>
+                                    <div class="post-meta d-flex">
+                                        <!-- <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a> -->
+                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> ${ dto.visitcount }</a>
+                                       <%--  <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ${ dto.likecount }</a> --%>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p>${ dto.content }</p>
+
+                            <!-- Post Tags -->
+                            <div class="post-tags mt-30">
+                            <script>
+							function qadeleteConfirm(idx) {
+								if(confirm("정말 삭제하시겠습니까?"))
+									location.href="./qadelete.do?idx="+idx;
+								else
+									alert("취소되었습니다.");
+							}
+							</script>
+                                <ul>
+                                <c:if test="${ UserId eq dto.id }">
+                                 
+                                    <li><a href="#" onclick="qadeleteConfirm(${ param.idx })">Delete</a></li>
+                                </c:if>
+                                    <li><a href="./qalist.do">List</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Post Author -->
+                            
+                            <!-- Related Post Area -->
+                            
+
+                            
+
+                            <!-- Post A Comment Area -->
+                            <div class="post-a-comment-area">
+
+                                <!-- Section Title -->
+                                <div class="section-heading style-2">
+                                    <h4>Leave a reply</h4>
+                                    <div class="line"></div>
+                                </div>
+
+                                <!-- Reply Form -->
+                                <div class="contact-form-area">
+                                    <form action="#" method="post">
+                                        <div class="row">
+                                            <!-- <div class="col-12 col-lg-6">
+                                                <input type="text" class="form-control" id="name" placeholder="Your Name*">
+                                            </div>
+                                            <div class="col-12 col-lg-6">
+                                                <input type="email" class="form-control" id="email" placeholder="Your Email*">
+                                            </div> -->
+                                            <div class="col-12">
+                                                <textarea name="message" class="form-control" id="message" placeholder="Message*"></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="btn vizew-btn mt-30" type="submit">Submit Comment</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+							<!-- Comment Area Start -->
+                            <div class="comment_area clearfix mb-50">
+
+                                <!-- Section Title -->
+                                <div class="section-heading style-2">
+                                    <h4>Comment</h4>
+                                    <div class="line"></div>
+                                </div>
+
+                                <ul>
+                                    <!-- Single Comment Area -->
+                                    <li class="single_comment_area">
+                                        <!-- Comment Content -->
+                                        <div class="comment-content d-flex">
+                                            <!-- Comment Author -->
+                                            <div class="comment-author">
+                                                <img src="img/bg-img/31.jpg" alt="author">
+                                            </div>
+                                            <!-- Comment Meta -->
+                                            <div class="comment-meta">
+                                                <a href="#" class="comment-date">27 Aug 2019</a>
+                                                <h6>Tomas Mandy</h6>
+                                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius</p>
+                                                <div class="d-flex align-items-center">
+                                                    <a href="#" class="like">like</a>
+                                                    <a href="#" class="reply">Reply</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <ol class="children">
+                                            <li class="single_comment_area">
+                                                <!-- Comment Content -->
+                                                <div class="comment-content d-flex">
+                                                    <!-- Comment Author -->
+                                                    <div class="comment-author">
+                                                        <img src="img/bg-img/32.jpg" alt="author">
+                                                    </div>
+                                                    <!-- Comment Meta -->
+                                                    <div class="comment-meta">
+                                                        <a href="#" class="comment-date">27 Aug 2019</a>
+                                                        <h6>Britney Millner</h6>
+                                                        <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius</p>
+                                                        <div class="d-flex align-items-center">
+                                                            <a href="#" class="like">like</a>
+                                                            <a href="#" class="reply">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </li>
+
+                                    
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Widget -->
+
+            </div>
+        </div>
+    </section>
+    <!-- ##### Post Details Area End ##### -->
+	</c:when>
+	<c:otherwise>
+	<form method="post">
+	<div class="vizew-login-area section-padding-80">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-8">
-                    <!-- Archive Catagory & View Options -->
-                    <div class="archive-catagory-view mb-50 d-flex align-items-center justify-content-between">
-                        <!-- Catagory -->
-                        <div class="archive-catagory">
-                            <h4><i class="fa fa-music" aria-hidden="true"></i> 자유게시판 </h4>
+                <div class="col-12 col-md-6">
+                    <div class="login-content">
+                        <!-- Section Title -->
+                        <div class="section-heading">
+                            <h4>Q&A 비밀번호 입력</h4>
+                            <div class="line"></div>
                         </div>
-                        <!-- View Options -->
-                        
-                        <div class="top-search-area">
-                                <form action="./fblist.do" method="get">
-                                	<select name="searchField">
-					                <option value="title">제목</option>
-					                <option value="content">내용</option>
-					                <option value="name">작성자</option>
-					            	</select>
-                                    <input type="search" name="searchWord"  placeholder="Search...">
-                                    <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </form>
-                            </div>
-                           
-                        <!-- <div class="view-options">
-                            <a href="archive-grid.html"><i class="fa fa-th-large" aria-hidden="true"></i></a>
-                            <a href="archive-list.html" class="active"><i class="fa fa-list-ul" aria-hidden="true"></i></a>
-                        </div> -->
-                    </div>
-
-                    <!-- Single Post Area -->
-                    <div class="single-post-area style-2">
-                            <c:choose>
-                            <c:when test="${ empty boardLists }">
-                            			
-                            		
-                            			<div class="post-content">
-                                    	<h4>등록된 게시물이 없습니다.</h4>
-                                    	<br/>
-                            			</div>
-                            			</div>
-                            			</div>
-                            		</c:when>
-                            	<c:otherwise>
-                            		<c:forEach items="${ boardLists }" var ="row" varStatus="loop" >
-	                                <!-- Post Content -->
-	                                <div class="single-post-area style-2">
-                            <div class="col-12 col-md-6">
-	                                <div class="post-content mt-0">
-	                                    <a href="#" class="post-cata cata-sm cata-success">${ map.totalCount - loop.index }</a>
-	                                    <a href="./fbview.do?idx=${ row.idx }" class="post-title mb-2">${ row.title }</a>
-	                                    <div class="post-meta d-flex align-items-center mb-2">
-	                                        <a href="#" class="post-author">By ${ row.name }</a>
-	                                        <i class="fa fa-circle" aria-hidden="true"></i>
-	                                        <a href="#" class="post-date">${ row.postdate }</a>
-	                                    </div>
-	                                    <p class="mb-2">${ row.content }</p>
-	                                    <div class="post-meta d-flex">
-	                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a>
-	                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> ${ row.visitcount }</a>
-	                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ${ row.likecount }</a>
-	                                    		</div>
-	                                		</div>
-	                                		</div>
-	                                		</div>
-                            		</c:forEach>
-                    			</c:otherwise>
-                    		</c:choose>
-	                    		
-                    <!-- Single Post Area -->
-                    <!-- <div class="single-post-area style-2">
-                        <div class="row align-items-center">
-                            <div class="col-12 col-md-6">
-                                Post Thumbnail
-                                <div class="post-thumbnail">
-                                    <img src="img/bg-img/22.jpg" alt="">
-
-                                    Video Duration
-                                    <span class="video-duration">05.03</span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                Post Content
-                                <div class="post-content mt-0">
-                                    <a href="#" class="post-cata cata-sm cata-danger">Game</a>
-                                    <a href="single-post.html" class="post-title mb-2">Thailand cave rescue: Boys 'doing well' after spending night</a>
-                                    <div class="post-meta d-flex align-items-center mb-2">
-                                        <a href="#" class="post-author">By Jane</a>
-                                        <i class="fa fa-circle" aria-hidden="true"></i>
-                                        <a href="#" class="post-date">Sep 08, 2018</a>
-                                    </div>
-                                    <p class="mb-2">Quisque mollis tristique ante. Proin ligula eros, varius id tristique sit amet, rutrum non ligula.</p>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a>
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 42</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 7</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-					<div class="row justify-content-center">
-					<a href="./fbwrite.do" class="post-cata cata-sm cata-success" style="font-size:15px">글쓰기</a>	
-					</div>	
-                    <!-- Pagination -->
-                    <nav class="mt-50">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                            <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-                            ${ map.pagingImg }
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                    </nav>
-                </div>
-			</div>
-		</div>
+		<div class="form-group">
+            <input type="text" class="form-control" name="qapass" placeholder="비밀번호">
+         </div>
+        <button type="submit" class="btn vizew-btn w-100 mt-30">Join in</button>
 	</div>
-               
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	</form>
+	</c:otherwise>
+	</c:choose>
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area">
         <div class="container">
@@ -281,7 +391,7 @@
                 <div class="col-12 col-sm-6 col-xl-3">
                     <div class="footer-widget mb-70">
                         <!-- Logo -->
-                        <a href="index.jsp" class="foo-logo d-block mb-4"><img src="img/core-img/logo2.png" alt=""></a>
+                        <a href="index.html" class="foo-logo d-block mb-4"><img src="img/core-img/logo2.png" alt=""></a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
                         <!-- Footer Newsletter Area -->
                         <div class="footer-nl-area">
@@ -339,7 +449,7 @@
                                 <img src="img/bg-img/1.jpg" alt="">
                             </div>
                             <div class="post-content">
-                                <a href="single-post.jsp" class="post-title">DC Shoes: gymkhana the</a>
+                                <a href="single-post.html" class="post-title">DC Shoes: gymkhana the</a>
                                 <div class="post-meta d-flex justify-content-between">
                                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>

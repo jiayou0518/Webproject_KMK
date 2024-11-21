@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,74 +117,22 @@
                                 <ul>
                                     <li class="active"><a href="index.jsp">Home</a></li>
                                     <li><a href="./fblist.do">FreeBoard</a></li>
-                                    <li><a href="#">Pages</a>
+                                    <li><a href="./qalist.do">Q&A</a></li>
+                                    <li><a href="contact.jsp">DataBoard</a></li>
+                                    <li><a href="#">Account</a>
                                         <ul class="dropdown">
-                                            <li><a href="index.jsp">- Home</a></li>
-                                            <li><a href="archive-list.jsp">- Archive List</a></li>
-                                            <li><a href="archive-grid.jsp">- Archive Grid</a></li>
-                                            <li><a href="single-post.jsp">- Single Post</a></li>
-                                            <li><a href="video-post.jsp">- Single Video Post</a></li>
-                                            <li><a href="contact.jsp">- Contact</a></li>
-                                            <li><a href="typography.jsp">- Typography</a></li>
-                                            <%
-												if(session.getAttribute("UserId")==null){
-											%>
+											<c:choose>
+											<c:when test="${ empty UserId }">
                                             <li><a href="./login.do">- Login</a></li>
                                             <li><a href="./join.do">- Join</a></li>
-                                            <% }else{
-                                            %>
+											</c:when>
+                                            <c:otherwise>
                                             <li><a href="./logout.do">- Logout</a></li>
-                                            
-                                            <%                                            
-                                            }
-                                            %>
+                                            </c:otherwise>
+											</c:choose>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Features</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.jsp">- Home</a></li>
-                                                <li><a href="archive-list.jsp">- Archive List</a></li>
-                                                <li><a href="archive-grid.jsp">- Archive Grid</a></li>
-                                                <li><a href="single-post.jsp">- Single Post</a></li>
-                                                <li><a href="video-post.jsp">- Single Video Post</a></li>
-                                                <li><a href="contact.jsp">- Contact</a></li>
-                                                <li><a href="typography.jsp">- Typography</a></li>
-                                                <li><a href="login.jsp">- Login</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.jsp">- Home</a></li>
-                                                <li><a href="archive-list.jsp">- Archive List</a></li>
-                                                <li><a href="archive-grid.jsp">- Archive Grid</a></li>
-                                                <li><a href="single-post.jsp">- Single Post</a></li>
-                                                <li><a href="video-post.jsp">- Single Video Post</a></li>
-                                                <li><a href="contact.jsp">- Contact</a></li>
-                                                <li><a href="typography.jsp">- Typography</a></li>
-                                                <li><a href="login.jsp">- Login</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.jsp">- Home</a></li>
-                                                <li><a href="archive-list.jsp">- Archive List</a></li>
-                                                <li><a href="archive-grid.jsp">- Archive Grid</a></li>
-                                                <li><a href="single-post.jsp">- Single Post</a></li>
-                                                <li><a href="video-post.jsp">- Single Video Post</a></li>
-                                                <li><a href="contact.jsp">- Contact</a></li>
-                                                <li><a href="typography.jsp">- Typography</a></li>
-                                                <li><a href="login.jsp">- Login</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="index.jsp">- Home</a></li>
-                                                <li><a href="archive-list.jsp">- Archive List</a></li>
-                                                <li><a href="archive-grid.jsp">- Archive Grid</a></li>
-                                                <li><a href="single-post.jsp">- Single Post</a></li>
-                                                <li><a href="video-post.jsp">- Single Video Post</a></li>
-                                                <li><a href="contact.jsp">- Contact</a></li>
-                                                <li><a href="typography.jsp">- Typography</a></li>
-                                                <li><a href="login.jsp">- Login</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="contact.jsp">Contact</a></li>
+                                    
                                 </ul>
                             </div>
                             <!-- Nav End -->

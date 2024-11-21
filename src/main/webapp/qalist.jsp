@@ -161,7 +161,7 @@
                     <div class="archive-catagory-view mb-50 d-flex align-items-center justify-content-between">
                         <!-- Catagory -->
                         <div class="archive-catagory">
-                            <h4><i class="fa fa-music" aria-hidden="true"></i> 자유게시판 </h4>
+                            <h4><i class="fa fa-music" aria-hidden="true"></i> Q&A게시판 </h4>
                         </div>
                         <!-- View Options -->
                         
@@ -202,18 +202,18 @@
 	                                <div class="single-post-area style-2">
                             <div class="col-12 col-md-6">
 	                                <div class="post-content mt-0">
-	                                    <a href="#" class="post-cata cata-sm cata-success">${ map.totalCount - loop.index }</a>
-	                                    <a href="./fbview.do?idx=${ row.idx }" class="post-title mb-2">${ row.title }</a>
+	                                    <!-- <a href="#" class="post-cata cata-sm cata-success">Sports</a> -->
+	                                    <a href="./qaview.do?idx=${ row.idx }" class="post-title mb-2">${ row.title }</a>
 	                                    <div class="post-meta d-flex align-items-center mb-2">
 	                                        <a href="#" class="post-author">By ${ row.name }</a>
 	                                        <i class="fa fa-circle" aria-hidden="true"></i>
 	                                        <a href="#" class="post-date">${ row.postdate }</a>
 	                                    </div>
-	                                    <p class="mb-2">${ row.content }</p>
+	                                    <%-- <p class="mb-2">${ row.content }</p> --%>
 	                                    <div class="post-meta d-flex">
 	                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 32</a>
 	                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> ${ row.visitcount }</a>
-	                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ${ row.likecount }</a>
+	                                        <%-- <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> ${ row.likecount }</a> --%>
 	                                    		</div>
 	                                		</div>
 	                                		</div>
@@ -255,7 +255,7 @@
                         </div>
                     </div> -->
 					<div class="row justify-content-center">
-					<a href="./fbwrite.do" class="post-cata cata-sm cata-success" style="font-size:15px">글쓰기</a>	
+					<a href="./qawrite.do" class="post-cata cata-sm cata-success" style="font-size:15px">글쓰기</a>	
 					</div>	
                     <!-- Pagination -->
                     <nav class="mt-50">

@@ -1,4 +1,4 @@
-package board;
+package freeboard;
 
 import java.sql.Date;
 
